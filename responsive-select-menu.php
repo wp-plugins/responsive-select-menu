@@ -4,13 +4,13 @@
 Plugin Name: Responsive Select Menu
 Plugin URI: http://wpmegamenu.com/responsive-select-menu
 Description: Turn your menu into a select box at small viewport sizes
-Version: 1.0
+Version: 1.1
 Author: Chris Mavricos, SevenSpark
 Author URI: http://sevenspark.com
 Copyright 2011-2012  Chris Mavricos, SevenSpark http://sevenspark.com (email : chris@sevenspark.com) 
 */
 
-define( 'RESPONSIVE_SELECT_MENU_VERSION', '1.0' );
+define( 'RESPONSIVE_SELECT_MENU_VERSION', '1.1' );
 define( 'RESPONSIVE_SELECT_MENU_SETTINGS', 'responsive-select-menu' );
 
 require_once( 'sparkoptions/SparkOptions.class.php' );		//SevenSpark Options Panel
@@ -482,46 +482,13 @@ class ResponsiveSelectWalker extends Walker_Nav_Menu{
 		$item_output = $args->before;
 		$item_output .= $dashes . $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 		$item_output .= $args->after;
-		
+
 		$output.= $item_output;
+
+		$output .= "</option>\n";
 	}
 	
 	function end_el(&$output, $item, $depth) {
-		global $responsiveMenuSelect;
-		if( $item->url == '#' && $responsiveMenuSelect->getSettings()->op( 'exclude-hashes' ) ){
-			return;
-		}
-		//IF UBERMENU
-		if( $responsiveMenuSelect->getSettings()->op( 'uber-enabled' ) ){
-
-			global $uberMenu;
-			$settings = $uberMenu->getSettings();
-
-			//Test override settings
-			$override = get_post_meta( $item->ID, '_menu_item_shortcode', true);
-			$overrideOn = /*$depth > 0  && */ $settings->op( 'wpmega-shortcodes' ) && !empty( $override ) ? true : false;
-			
-			//Test sidebar settings
-			$sidebar = get_post_meta( $item->ID, '_menu_item_sidebars', true);
-			$sidebarOn = ( $settings->op( 'wpmega-top-level-widgets' ) || $depth > 0 ) && $settings->op( 'wpmega-sidebars' ) && !empty( $sidebar ) ? true : false;
-
-			$notext = get_post_meta( $item->ID, '_menu_item_notext', true ) == 'on' || $item->title == UBERMENU_NOTEXT ? true : false;
-			$nolink = get_post_meta( $item->ID, '_menu_item_nolink', true ) == 'on' ? true : false;
-				
-			if( $nolink && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-nonlinks' ) ){
-				return;
-			}
-			if( $notext && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-notext' ) ){
-				return;
-			}
-			if( $sidebarOn && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-sidebar' ) ){
-				return;
-			}
-			if( $overrideOn && $responsiveMenuSelect->getSettings()->op( 'uber-exclude-content-overrides' ) ){
-				return;
-			}			
-
-		}
-		$output .= "</option>\n";
+		return;		
 	}
 }

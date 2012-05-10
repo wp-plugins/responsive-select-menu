@@ -64,10 +64,15 @@ in the menu.
 
 == Changelog ==
 
+= 1.1 =
+* Fixed option closing tag order for valid HTML markup
+
 = 1.0 =
 * Initial version
 
 
 == Upgrade Notice ==
 
+= 1.1 =
+* Upgrade to ensure valid markup - won't change your settings.
 
