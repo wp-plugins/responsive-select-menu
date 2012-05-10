@@ -8,7 +8,7 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The Responsive Select Menu plugin automatically turns any WordPress 3 Menu into a select box / dropdown at small sizes.
+The Responsive Select Menu plugin automatically turns any WordPress 3 Menu into a select box / dropdown on mobile devices.
 
 == Description ==
 
