@@ -12,8 +12,19 @@ The Responsive Select Menu plugin automatically turns any WordPress 3 Menu into 
 
 == Description ==
 
+[View the Demo](http://wpmegamenu.com/responsive-select-menu/)
+
 One common UI paradigm for navigation menus with responsive design is to display a select box (form element) 
 for mobile devices.  This plugin allows you to turn your WordPress 3 menu into a select box below a width of your choice.
+
+= Features =
+
+* Takes up less screen real estate on mobile devices
+* Easier navigation for touch screens
+* Works automatically - no need to add extra PHP code
+
+
+= Highly Configurable =
 
 Through the Responsive Select Menu Control Panel you can:
 
@@ -23,6 +34,7 @@ Through the Responsive Select Menu Control Panel you can:
 *   Choose whether or not to exclude “dummy” items that don’t have links
 *   Set the text of the first menu item
 
+The demo is built with [UberMenu - Wordpress Mega Menu Plugin](http://wpmegamenu.com/) , but it is designed to work with any UL-based WordPress 3 menu.
 
 
 == Installation ==
