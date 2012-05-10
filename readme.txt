@@ -1,0 +1,60 @@
+=== Responsive Select Menu ===
+Contributors: sevenspark
+Donate link: http://bit.ly/DonateResponsiveSelect
+Tags: responsive, menu, select, drop down, 
+Requires at least: 3.3
+Tested up to: 3.3.2
+Stable tag: trunk
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+The Responsive Select Menu plugin automatically turns any WordPress 3 Menu into a select box / dropdown at small sizes.
+
+== Description ==
+
+One common UI paradigm for navigation menus with responsive design is to display a select box (form element) 
+for mobile devices.  This plugin allows you to turn your WordPress 3 menu into a select box below a width of your choice.
+
+Through the Responsive Select Menu Control Panel you can:
+
+*   Set your width breakpoint (where your menu switches from your standard menu to a select box)
+*   Configure how many levels you wish to include in the select menu. Set it to 1 to include only the top-level menu items.
+*   Choose the character used to indent your submenu items within the select box
+*   Choose whether or not to exclude “dummy” items that don’t have links
+*   Set the text of the first menu item
+
+
+
+== Installation ==
+
+This section describes how to install the plugin and get it working.
+
+1. Upload the plugin zip through your WordPress admin
+1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Navigate to Appearance > Responsive Select to configure your menu
+
+
+== Frequently Asked Questions ==
+
+= Do I have to have a "Navigate" item as my first item =
+
+You can change the name of this item, but it has to exist.  Otherwise, you won't be able to navigate to the first item in the menu
+if you're not using the "Show currently selected item" - even if you have that option enabled, the issue would still exist on pages not 
+in the menu.
+
+
+
+== Screenshots ==
+
+1. Responsive select menu on the iPhone/iPod Touch
+2. Responsive select menu Control Panel
+
+== Changelog ==
+
+= 1.0 =
+* Initial version
+
+
+== Upgrade Notice ==
+
+
