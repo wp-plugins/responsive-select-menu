@@ -36,6 +36,7 @@ Through the Responsive Select Menu Control Panel you can:
 
 The demo is built with [UberMenu - Wordpress Mega Menu Plugin](http://wpmegamenu.com/) , but it is designed to work with any UL-based WordPress 3 menu.
 
+Based on the excellent tutorial from [Chris Coyier and CSS Tricks](http://css-tricks.com/convert-menu-to-dropdown/) - thanks!
 
 == Installation ==
 
