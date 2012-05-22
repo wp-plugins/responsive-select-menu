@@ -12,7 +12,9 @@ The Responsive Select Menu plugin automatically turns any WordPress 3 Menu into 
 
 == Description ==
 
-[View the Demo](http://wpmegamenu.com/responsive-select-menu/)
+[View Demo 1](http://wpmegamenu.com/responsive-select-menu/)
+
+[View Demo 2 in a Responsive WordPress Theme](http://agility.sevenspark.com/responsive-select-menu)
 
 One common UI paradigm for navigation menus with responsive design is to display a select box (form element) 
 for mobile devices.  This plugin allows you to turn your WordPress 3 menu into a select box below a width of your choice.
