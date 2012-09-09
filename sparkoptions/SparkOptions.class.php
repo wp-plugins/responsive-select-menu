@@ -246,6 +246,7 @@ class ResponsiveMenuSelectOptions{
 			'default'=> '',
 			'special_class'	=>	'',
 			'gradient'	=> false,
+			'default_all' => 'off',
 		)));
 		
 		$settings = $this->getSettings();
@@ -291,10 +292,51 @@ class ResponsiveMenuSelectOptions{
 				$html.= '<div class="clear"></div>';
 				
 				break;
+
+			case 'checklist':
+
+				$html.= '<label class="spark-admin-op-title">'.$config['title'].'</label>'; //$title;
+				$html.= $desc;
+				$html.= '<div class="spark-admin-checklist">';
+
+				if(!is_array($ops)) $ops = $ops();	//if it's not an array it's a function that produces an array
+
+				if(is_array($ops)){
+
+					$val = '';
+					$multi = false;
+
+					if( isset( $settings[$id] ) ){
+						$val = $settings[$id];
+						if( is_array( $val ) ){
+							$multi = true;
+						}
+					}
+					//print_r( $val );
+
+					$k = 0;
+					foreach($ops as $opVal => $op){
+						//echo "val = $val";
+						$checked = '';
+						if( $multi ){
+							$checked = in_array( $opVal, $val ) ? 'checked="checked"' : '';
+						}
+						else $checked = $opVal == $val ? 'checked="checked"' : '';
+						$input_id = $id.'-'.$k;
+						$html.= '<label class="spark-admin-op-title" for="'.$input_id.'">'.$op.'</label> <input type="checkbox" value="'.$opVal.'" '.$checked.' name="'.$id.'[]" id="'.$input_id.'" />';
+						$k++;
+					}
+				}
+
+				$html.= '</div>';
+
+				break;
+
 				
 			case 'select':
 				
-				$html.= '<label class="spark-admin-op-title">'.$title.'</label>'; //$title;
+				$html.= '<label class="spark-admin-op-title">'.$config['title'].'</label>'; //$title;
+
 				$html.= '<select id="'.$id.'" name="'.$id.'" >';
 				
 				if(!is_array($ops)) $ops = $ops();	//if it's not an array it's a function that produces an array
@@ -447,6 +489,21 @@ class ResponsiveMenuSelectOptions{
 		
 		$this->addToPanel( $panel_id , $id );
 		
+	}
+
+	function addChecklist( $panel_id , $id , $title , $desc = '' , $ops = array(), $default = '' , $default_all='off', $special_class = '' ){
+		$this->ops[$id] = array(
+			'title'		=>	$title,
+			'desc'		=>	$desc,
+			'ops'		=>	$ops,
+			'default'	=>	$default,
+			'default_all' => $default_all,
+			'special_class' => $special_class,	
+
+			'type'		=>	'checklist',
+		);
+		
+		$this->addToPanel( $panel_id , $id );
 	}
 	
 	function addRadio( $panel_id , $id , $title , $desc = '' , $ops = array() , $default = '' , $special_class = '' ){

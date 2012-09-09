@@ -326,9 +326,19 @@ label.spark-admin-op-title{
 }
 
 /* Checkbox */
-.spark-admin-op.container-type-checkbox label.spark-admin-op-title{
+.spark-admin-op.container-type-checkbox label.spark-admin-op-title,
+.spark-admin-op.container-type-checklist .spark-admin-checklist label.spark-admin-op-title{
 	float:left;
 	width:200px;
+	clear:both;
+}
+.spark-admin-op.container-type-checklist .spark-admin-checklist{
+	margin-top:10px;
+}
+.spark-admin-op.container-type-checklist .spark-admin-checklist label{
+	margin-bottom:10px;
+	font-weight:normal;
+	font-style:italic;
 }
 
 /* Select */
