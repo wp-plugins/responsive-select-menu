@@ -4,13 +4,13 @@
 Plugin Name: Responsive Select Menu
 Plugin URI: http://wpmegamenu.com/responsive-select-menu
 Description: Turn your menu into a select box at small viewport sizes
-Version: 1.1
+Version: 1.2
 Author: Chris Mavricos, SevenSpark
 Author URI: http://sevenspark.com
 Copyright 2011-2012  Chris Mavricos, SevenSpark http://sevenspark.com (email : chris@sevenspark.com) 
 */
 
-define( 'RESPONSIVE_SELECT_MENU_VERSION', '1.1' );
+define( 'RESPONSIVE_SELECT_MENU_VERSION', '1.2' );
 define( 'RESPONSIVE_SELECT_MENU_SETTINGS', 'responsive-select-menu' );
 
 require_once( 'sparkoptions/SparkOptions.class.php' );		//SevenSpark Options Panel
@@ -40,7 +40,7 @@ class ResponsiveMenuSelect{
 		//Filters
 		add_filter( 'wp_nav_menu_args' , array( $this , 'responsiveSelectAddFilter' ), 2100 );  	//filters arguments passed to wp_nav_menu
 		
-		add_filter( 'wp_nav_menu_args' , array( $this , 'responsiveSelectFilter' ), 2200 );
+		add_filter( 'wp_nav_menu_args' , array( $this , 'responsiveSelectFilter' ), 2200 );			//second call, to print select menu
 		
 	}
 
@@ -68,6 +68,28 @@ class ResponsiveMenuSelect{
 			else $this->enabled = false;
 		}
 		return $this->enabled;
+	}
+
+	/**
+	 * Determine whether this particular menu location should be activated
+	 */
+	function isActivated( $args ){
+
+		//Activate All?
+		if( $this->settings->op( 'activate_theme_locations_all' ) ){
+			return true;
+		}
+
+		//Activate this theme_location specifically?
+		if( isset( $args['theme_location'] ) ){
+			$location = $args['theme_location'];
+			$active_theme_locations = $this->settings->op( 'active_theme_locations' );
+
+			if( is_array( $active_theme_locations ) && in_array( $location, $active_theme_locations ) ){
+				return true;
+			}
+		}
+		return false;
 	}
 
 
@@ -126,10 +148,11 @@ jQuery(document).ready( function($){
 <?php
 		}
 	}
+
 	
 	function responsiveSelectAddFilter( $args ){
 
-		if( $this->isEnabled() ){
+		if( $this->isEnabled() && $this->isActivated( $args ) ){
 		
 			//Don't add it twice (when it gets called again by selectNavMenu() )
 			if( isset( $args['responsiveMenuSelect'] ) && $args['responsiveMenuSelect'] == true ) {
@@ -264,6 +287,24 @@ jQuery(document).ready( function($){
 					'off'
 					);
 
+		$sparkOps->addSubHeader( $basic, 
+					'activate_theme_locations_header',
+					'Activate Theme Locations'
+					);
+
+		$sparkOps->addCheckbox( $basic,
+					'activate_theme_locations_all',
+					'Activate All Theme Locations',
+					'Apply the responsive select menu to all menus',
+					'on'
+					);
+
+		$sparkOps->addChecklist( $basic,
+					'active_theme_locations', 
+					'Selectively Activate Theme Locations',
+					'Disable the above and activate only the theme locations you want.  These theme locations correspond to the Theme Locations Meta Box in Appearance > Menus',
+					'get_registered_nav_menus'
+					);
 
 
 
