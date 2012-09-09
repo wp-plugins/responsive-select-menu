@@ -3,7 +3,7 @@ Contributors: sevenspark
 Donate link: http://bit.ly/DonateResponsiveSelect
 Tags: responsive, menu, select, drop down, 
 Requires at least: 3.3
-Tested up to: 3.3.2
+Tested up to: 3.4.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -30,6 +30,7 @@ for mobile devices.  This plugin allows you to turn your WordPress 3 menu into a
 
 Through the Responsive Select Menu Control Panel you can:
 
+*	New in 1.2 - select which theme locations to apply the menu to 
 *   Set your width breakpoint (where your menu switches from your standard menu to a select box)
 *   Configure how many levels you wish to include in the select menu. Set it to 1 to include only the top-level menu items.
 *   Choose the character used to indent your submenu items within the select box
@@ -66,6 +67,9 @@ in the menu.
 
 == Changelog ==
 
+= 1.2 =
+* Added option to select specific theme locations to apply the responsive select menu to.
+
 = 1.1 =
 * Fixed option closing tag order for valid HTML markup
 
@@ -74,6 +78,9 @@ in the menu.
 
 
 == Upgrade Notice ==
+
+= 1.2 =
+* Allows you to apply the menu selectively to registered theme locations.
 
 = 1.1 =
 * Upgrade to ensure valid markup - won't change your settings.
