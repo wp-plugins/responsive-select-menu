@@ -4,13 +4,13 @@
 Plugin Name: Responsive Select Menu
 Plugin URI: http://wpmegamenu.com/responsive-select-menu
 Description: Turn your menu into a select box at small viewport sizes
-Version: 1.2
+Version: 1.3
 Author: Chris Mavricos, SevenSpark
 Author URI: http://sevenspark.com
 Copyright 2011-2012  Chris Mavricos, SevenSpark http://sevenspark.com (email : chris@sevenspark.com) 
 */
 
-define( 'RESPONSIVE_SELECT_MENU_VERSION', '1.2' );
+define( 'RESPONSIVE_SELECT_MENU_VERSION', '1.3' );
 define( 'RESPONSIVE_SELECT_MENU_SETTINGS', 'responsive-select-menu' );
 
 require_once( 'sparkoptions/SparkOptions.class.php' );		//SevenSpark Options Panel
@@ -113,7 +113,7 @@ class ResponsiveMenuSelect{
 <!-- Responsive Select CSS 
 ================================================================ -->
 <style type="text/css" id="responsive-select-css">
-.responsiveSelectContainer select.responsiveMenuSelect{
+.responsiveSelectContainer select.responsiveMenuSelect, select.responsiveMenuSelect{
 	display:none;
 }
 
@@ -123,10 +123,10 @@ class ResponsiveMenuSelect{
 		background:none !important;
 		box-shadow:none !important;
 	}
-	.responsiveSelectContainer ul{
+	.responsiveSelectContainer ul, ul.responsiveSelectFullMenu{
 		display: none !important;
 	}
-	.responsiveSelectContainer select.responsiveMenuSelect { 
+	.responsiveSelectContainer select.responsiveMenuSelect, select.responsiveMenuSelect { 
 		display: inline-block; 
 		width:100%;
 	}
@@ -159,9 +159,13 @@ jQuery(document).ready( function($){
 				return $args;
 			}
 			
-			$selectNav = $this->selectNavMenu( $args );		
+			$selectNav = $this->selectNavMenu( $args );
 			
-			$args['container_class'].= ' responsiveSelectContainer';		
+			$args['container_class'].= ' responsiveSelectContainer';	
+			$args['menu_class'].= ' responsiveSelectFullMenu';
+
+			//This line would add a container if it doesn't exist, but has the potential to break certain theme menus
+			//if( $args['container'] != 'nav' ) $args['container'] = 'div';	//make sure there's a container to add class to
 			
 			$args['items_wrap']	= '<ul id="%1$s" class="%2$s">%3$s</ul>'.$selectNav;
 
@@ -411,7 +415,7 @@ jQuery(document).ready( function($){
 			<div class="cf">
 				<h4>UberMenu - Responsive WordPress Mega Menu Plugin</h4>
 
-				<a href="http://wpmegamenu.com"><img src="http://3.s3.envato.com/files/18012678/UberMenu_packaging_main.jpg" alt="UberMenu" /></a>
+				<a href="http://wpmegamenu.com"><img src="http://2.s3.envato.com/files/43473217/UberMenu_packaging_main_2.2.png" alt="UberMenu" /></a>
 
 				<p>UberMenu is a user-friendly, highly customizable responsive Mega Menu WordPress plugin. 
 				It works out of the box with the WordPress 3 Menu System, making it simple to get started 
@@ -426,8 +430,16 @@ jQuery(document).ready( function($){
 
 				<img src="http://3.s3.envato.com/files/12296998/Preview/01_Agility_-_Responsive_Minimal_HTML5.__large_preview.jpg" alt="Agility" />
 
-				<a href="http://agility.sevenspark.com" class="button save-button" target="_blank">Coming Soon! [View the demo] &rarr;</a>
+				<a href="http://agility.sevenspark.com" class="button save-button" target="_blank">View the demo &rarr;</a>
+			</div>
 
+			<div class="cf">
+				<h4>WordPress Menu Management Enhancer</h4>
+
+				<img src="http://3.s3.envato.com/files/6124310/MenuManager_packaging_main.jpg" alt="Agility" />
+
+				<a href="http://codecanyon.net/item/menu-management-enhancer-for-wordpress/529353?ref=sevenspark" class="button save-button" target="_blank">View the demo &rarr;</a>
+			</div>
 
 		';
 
