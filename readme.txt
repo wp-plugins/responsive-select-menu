@@ -3,7 +3,7 @@ Contributors: sevenspark
 Donate link: http://bit.ly/DonateResponsiveSelect
 Tags: responsive, menu, select, drop down, 
 Requires at least: 3.3
-Tested up to: 3.4.2
+Tested up to: 3.5
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -58,6 +58,10 @@ You can change the name of this item, but it has to exist.  Otherwise, you won't
 if you're not using the "Show currently selected item" - even if you have that option enabled, the issue would still exist on pages not 
 in the menu.
 
+= It doesn't work =
+
+If your theme creates a menu the standard way with wp_nav_menu, it should work.  If not, make sure you're using 1.3, as this resolves the most common "it doesn't work" issue.
+
 
 
 == Screenshots ==
@@ -66,6 +70,9 @@ in the menu.
 2. Responsive select menu Control Panel
 
 == Changelog ==
+
+= 1.3 =
+* Better compatibility with themes that remove the wp_nav_menu 'container' parameter.
 
 = 1.2 =
 * Added option to select specific theme locations to apply the responsive select menu to.
@@ -78,6 +85,9 @@ in the menu.
 
 
 == Upgrade Notice ==
+
+= 1.3 =
+* Solves the most common "it doesn't work" scenario.  Merry Christmas! :)
 
 = 1.2 =
 * Allows you to apply the menu selectively to registered theme locations.
