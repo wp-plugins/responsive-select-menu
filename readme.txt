@@ -71,7 +71,7 @@ If your theme creates a menu the standard way with wp_nav_menu, it should work. 
 
 == Changelog ==
 
-= 1.3.1 =
+= 1.4 =
 * Handles blank menu items better
 * Improves compatibility with latest version of UberMenu
 
@@ -90,7 +90,7 @@ If your theme creates a menu the standard way with wp_nav_menu, it should work. 
 
 == Upgrade Notice ==
 
-= 1.3.1 =
+= 1.4 =
 * Recommended for UberMenu users
 * Recommended for anyone who uses "dummy" menu items with URL set to '#' or ''
 
