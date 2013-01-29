@@ -4,13 +4,13 @@
 Plugin Name: Responsive Select Menu
 Plugin URI: http://wpmegamenu.com/responsive-select-menu
 Description: Turn your menu into a select box at small viewport sizes
-Version: 1.3
+Version: 1.4
 Author: Chris Mavricos, SevenSpark
 Author URI: http://sevenspark.com
 Copyright 2011-2012  Chris Mavricos, SevenSpark http://sevenspark.com (email : chris@sevenspark.com) 
 */
 
-define( 'RESPONSIVE_SELECT_MENU_VERSION', '1.3' );
+define( 'RESPONSIVE_SELECT_MENU_VERSION', '1.4' );
 define( 'RESPONSIVE_SELECT_MENU_SETTINGS', 'responsive-select-menu' );
 
 require_once( 'sparkoptions/SparkOptions.class.php' );		//SevenSpark Options Panel
@@ -123,7 +123,7 @@ class ResponsiveMenuSelect{
 		background:none !important;
 		box-shadow:none !important;
 	}
-	.responsiveSelectContainer ul, ul.responsiveSelectFullMenu{
+	.responsiveSelectContainer ul, ul.responsiveSelectFullMenu, #megaMenu ul.megaMenu.responsiveSelectFullMenu{
 		display: none !important;
 	}
 	.responsiveSelectContainer select.responsiveMenuSelect, select.responsiveMenuSelect { 
@@ -139,7 +139,8 @@ class ResponsiveMenuSelect{
 <script type="text/javascript">
 jQuery(document).ready( function($){
 	$( '.responsiveMenuSelect' ).change(function() {
-	  window.location = $(this).find( 'option:selected' ).val();
+		var loc = $(this).find( 'option:selected' ).val();
+		if( loc != '' && loc != '#' ) window.location = loc;
 	});
 });
 </script>
@@ -271,7 +272,7 @@ jQuery(document).ready( function($){
 		$sparkOps->addCheckbox( $basic,
 					'exclude-hashes',
 					'Exclude Items Without Links',
-					'Exclude any items where the URL is set to "#"',
+					'Exclude any items where the URL is set to "#" or blank',
 					'on'
 					);
 
@@ -426,9 +427,31 @@ jQuery(document).ready( function($){
 			</div>
 
 			<div class="cf">
+				<h4>UberMenu - Sticky Menu Extension</h4>
+
+				<a href="http://wpmegamenu.com/sticky"><img src="http://2.s3.envato.com/files/46737754/UberMenuSticky_packaging_main_1.0.png" alt="UberMenu Sticky Menu" /></a>
+
+				<p>Turn your UberMenu into a Sticky Menu as your users scroll.</p>
+
+				<a href="http://wpmegamenu.com/sticky" class="button save-button" target="_blank">Check out the UberMenu Sticky demo &rarr;</a>
+
+			</div>
+
+			<div class="cf">
+				<h4>UberMenu - Conditionals Extension</h4>
+
+				<a href="http://wpmegamenu.com/conditionals"><img src="http://0.s3.envato.com/files/35005553/UberMenu_Conditionals_packaging_main.png" alt="UberMenu Conditionals" /></a>
+
+				<p>Display or hide your menu items based on preset conditions.</p>
+
+				<a href="http://labs.sevenspark.com/UberMenuConditionals" class="button save-button" target="_blank">Check out the UberMenu Conditionals demo &rarr;</a>
+
+			</div>
+
+			<div class="cf">
 				<h4>Agility - Responsive HTML5 WordPress Theme</h4>
 
-				<img src="http://3.s3.envato.com/files/12296998/Preview/01_Agility_-_Responsive_Minimal_HTML5.__large_preview.jpg" alt="Agility" />
+				<img src="http://1.s3.envato.com/files/26983727/01_Agility_Responsive_WordPress_theme.__large_preview.png" alt="Agility" />
 
 				<a href="http://agility.sevenspark.com" class="button save-button" target="_blank">View the demo &rarr;</a>
 			</div>
@@ -488,7 +511,7 @@ class ResponsiveSelectWalker extends Walker_Nav_Menu{
 		$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
 		$id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
 
-		if( $item->url == '#' && $responsiveMenuSelect->getSettings()->op( 'exclude-hashes' ) ){
+		if( ( $item->url == '#' || $item->url == '' ) && $responsiveMenuSelect->getSettings()->op( 'exclude-hashes' ) ){
 			return;
 		}
 
@@ -524,7 +547,8 @@ class ResponsiveSelectWalker extends Walker_Nav_Menu{
 
 		}
 
-		$attributes = ! empty( $item->url )        ? ' value="'   . esc_attr( $item->url        ) .'"' : '';
+		//$attributes = ! empty( $item->url )        ? ' value="'   . esc_attr( $item->url        ) .'"' : '';
+		$attributes = ' value="'   . esc_attr( $item->url        ) .'"';
 		
 		if( $responsiveMenuSelect->getSettings()->op( 'current_selected' ) && strpos( $class_names , 'current-menu-item' ) > 0 ){
 			$attributes.= ' selected="selected"';

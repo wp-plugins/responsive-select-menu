@@ -3,7 +3,7 @@ Contributors: sevenspark
 Donate link: http://bit.ly/DonateResponsiveSelect
 Tags: responsive, menu, select, drop down, 
 Requires at least: 3.3
-Tested up to: 3.5
+Tested up to: 3.5.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -60,7 +60,7 @@ in the menu.
 
 = It doesn't work =
 
-If your theme creates a menu the standard way with wp_nav_menu, it should work.  If not, make sure you're using 1.3, as this resolves the most common "it doesn't work" issue.
+If your theme creates a menu the standard way with wp_nav_menu, it should work.  If not, make sure you're using 1.3+, as this resolves the most common "it doesn't work" issue.
 
 
 
@@ -70,6 +70,10 @@ If your theme creates a menu the standard way with wp_nav_menu, it should work. 
 2. Responsive select menu Control Panel
 
 == Changelog ==
+
+= 1.3.1 =
+* Handles blank menu items better
+* Improves compatibility with latest version of UberMenu
 
 = 1.3 =
 * Better compatibility with themes that remove the wp_nav_menu 'container' parameter.
@@ -85,6 +89,10 @@ If your theme creates a menu the standard way with wp_nav_menu, it should work. 
 
 
 == Upgrade Notice ==
+
+= 1.3.1 =
+* Recommended for UberMenu users
+* Recommended for anyone who uses "dummy" menu items with URL set to '#' or ''
 
 = 1.3 =
 * Solves the most common "it doesn't work" scenario.  Merry Christmas! :)
