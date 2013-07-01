@@ -415,6 +415,7 @@ label.spark-admin-op-title{
 	font-weight:bold;
 	box-shadow:0px 3px 0px #e2e2e2;
 	border:1px solid #ddd;
+	height:auto;
 }
 .button.save-button:hover,
 .button.reset-button:hover{
